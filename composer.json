@@ -1,0 +1,21 @@
+{
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "elycin/php-clamav",
+        "version": "dev-master",
+        "source": {
+          "url": "git://github.com/elycin/php-clamav.git",
+          "type": "git",
+          "reference": "master"
+        },
+        "autoload": {
+          "psr-0": {
+            "Elycin\\ClamAV": "lib  "
+          }
+        }
+      }
+    }
+  ]
+}
