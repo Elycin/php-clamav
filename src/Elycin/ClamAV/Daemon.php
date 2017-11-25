@@ -37,11 +37,21 @@ class Daemon
         }
     }
 
+    public function setBufferLength($buffer_length)
+    {
+        $this->buffer_length = $buffer_length;
+    }
+
+    public function getBufferLength()
+    {
+        return $this->buffer_length;
+    }
+
     private function send($query)
     {
         $this->socket = $this->connect();
         fwrite($this->socket, $query);
-        $response = fread($this->socket, 1024);
+        $response = fread($this->socket, $this->buffer_length);
         return ($response != "UNKNOWN COMMAND\n") ? $response : new \Exception("ClamAV Daemon returned Unknown Command: " . $query);
     }
 
@@ -59,7 +69,8 @@ class Daemon
         return $this->send($pending_command);
     }
 
-    private function exceptionSocketDoesNotExist(){
+    private function exceptionSocketDoesNotExist()
+    {
         return new \Exception(sprintf("IPC Socket File %s does not exist.", $this->socket_path));
     }
 }
