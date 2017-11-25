@@ -1,23 +1,29 @@
 {
-  "name": "elycin/php-clamav",
-  "description": "PHP Library for ClamAV Daemon",
-  "version": "0.0.1",
-  "type": "library",
-  "homepage": "https://elyc.in/",
-  "time": "2017-11-24",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Andrew Haughie",
-      "email": "elycin2@gmail.com",
-      "homepage": "https://elyc.in/",
-      "role": "Developer"
-    }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Elycin\\ClamAV\\": "src/"
-    }
-  },
-  "minimum-stability": "stable"
+   "name":"elycin/php-clamav",
+   "description":"PHP Library for using ClamAV Daemon",
+   "keywords":[
+      "ClamAV"
+   ],
+   "license":"MIT",
+   "type":"library",
+   "authors":[
+      {
+         "name":"Andrew Haughie (Elycin)",
+         "email":"Elycin2@gmail.com",
+         "homepage":"https://elyc.in"
+      }
+   ],
+   "support":{
+      "issues":"https://github.com/Elycin/php-clamav/issues",
+      "email":"elycin2@gmail.com",
+      "source":"https://github.com/Elycin/php-clamav"
+   },
+   "require":{
+      "php":">=5.4.0"
+   },
+   "autoload":{
+      "files":[
+         "src/Elycin/ClamAV/Daemon.php"
+      ]
+   }
 }
