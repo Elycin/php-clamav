@@ -20,7 +20,7 @@ class Daemon
     public function __construct($socket_path = "/var/run/clamav/clamd.ctl")
     {
         $this->socket_path = $socket_path;
-        if (!$this->doesSocketExist()) return new \Exception(sprintf("IPC Socket File %s does not exist.", $socket_path));
+        if (!$this->doesSocketExist()) return $this->exceptionSocketDoesNotExist();
     }
 
     public function doesSocketExist()
@@ -33,7 +33,7 @@ class Daemon
         try {
             return fsockopen("unix://" . $this->socket_path);
         } catch (\Exception $exception) {
-            return Exceptions::socketDoesNotExist($this->socket_path);
+            return $this->exceptionSocketDoesNotExist();
         }
     }
 
@@ -59,4 +59,7 @@ class Daemon
         return $this->send($pending_command);
     }
 
+    private function exceptionSocketDoesNotExist(){
+        return new \Exception(sprintf("IPC Socket File %s does not exist.", $this->socket_path));
+    }
 }
