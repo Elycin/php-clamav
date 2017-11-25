@@ -47,15 +47,15 @@ class Daemon
 
     public function isFileVirus($file_path)
     {
-
+        return $this->send("nSCAN " . trim($file_path));
     }
 
     public function __call($name, $arguments)
     {
         $pending_command = trim(sprintf(
-            "%s%s %s",
-            $this->character_prefix, strtoupper($name), $arguments[0]
-        )) . "\n";
+                "%s%s %s",
+                $this->character_prefix, strtoupper($name), $arguments[0]
+            )) . "\n";
         return $this->send($pending_command);
     }
 
